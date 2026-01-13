@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Hacking...</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        body {
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+        }
+        .hacker-btn {
+            background: transparent;
+            color: #0f0;
+            border: 2px solid #0f0;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 0 10px #0f0;
+            text-transform: uppercase;
+        }
+        .hacker-btn:hover {
+            background: #0f0;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>SYSTEM STATUS: READY</h1>
+    <p>ກະລຸນາກົດປຸ່ມດ້ານລຸ່ມເພື່ອ Scan ລະບົບ</p>
+    <button class="hacker-btn" onclick="startPrank()">SCAN SYSTEM</button>
+</div>
+
+<script>
+    function startPrank() {
+        // ສຽງເຕືອນ (ຖ້າຕ້ອງການ)
+        let timerInterval;
+        Swal.fire({
+            title: 'ກຳລັງເຈາະລະບົບ...',
+            html: 'Loading <b></b>%',
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+                const b = Swal.getHtmlContainer().querySelector('b');
+                timerInterval = setInterval(() => {
+                    b.textContent = Math.floor(Math.random() * 100);
+                }, 100);
+            },
+            willClose: () => {
+                clearInterval(timerInterval);
+            }
+        }).then((result) => {
+            // ແຈ້ງເຕືອນເງິນອອກປອມ
+            Swal.fire({
+                icon: 'warning',
+                title: '<span style="color:red">BCEL One ແຈ້ງເຕືອນ!</span>',
+                html: `
+                    <div style="text-align: left; font-size: 16px;">
+                        <p><b>ລາຍການຖອນເງິນສຳເລັດ</b></p>
+                        <p>ຈາກບັນຊີ: 020xxxxxxx456</p>
+                        <p>ຈຳນວນເງິນ: <span style="color:red">-5,000,000 LAK</span></p>
+                        <p>ວັນທີ: ${new Date().toLocaleString()}</p>
+                        <hr>
+                        <p style="text-align:center; color:gray;">HACKED BY G-FLASH</p>
+                    </div>
+                `,
+                confirmButtonText: 'ຕົກລົງ',
+                confirmButtonColor: '#d33'
+            });
+        });
+    }
+</script>
+
+</body>
+</html>
